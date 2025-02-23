@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 api_key_youtube = os.getenv("YOUTUBE_API_KEY")
 api_key_openai = os.getenv("OPENAI_API_KEY")
