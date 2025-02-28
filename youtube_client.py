@@ -33,8 +33,13 @@ def get_video_comments(video_id):
 
     while response:
         for item in response['items']:
-            comment = item['snippet']['topLevelComment']['snippet']['textOriginal']
-            comments.append(comment)
+            snippet = item['snippet']['topLevelComment']['snippet']
+            comment_data = {
+                "text": snippet['textOriginal'],
+                "likes": snippet['likeCount'],
+                "replies": item['snippet']['totalReplyCount']
+            }
+            comments.append(comment_data)
         if 'nextPageToken' in response:
             request = youtube.commentThreads().list(
                 part="snippet",

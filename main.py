@@ -3,7 +3,7 @@ from rich.markdown import Markdown
 
 from config import chat_log_file_name
 from youtube_client import get_video_comments, check_video_exists
-from openai_client import generate_chatgpt_response
+from openai_client import analyze_comments_in_batches
 from chat_client import save_chat_file, clear_chat_file, read_chat_file
 
 def main():
@@ -34,7 +34,8 @@ def main():
         
         chat_history = read_chat_file(chat_log_file_name)
         comments = get_video_comments(video_id)
-        gpt_query = generate_chatgpt_response(comments, user_query, chat_history)
+        
+        gpt_query = analyze_comments_in_batches(comments, user_query, chat_history)
         
         save_chat_file("User", user_query, chat_log_file_name)
         save_chat_file("ChatGPT", gpt_query, chat_log_file_name)
