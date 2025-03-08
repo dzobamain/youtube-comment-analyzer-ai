@@ -1,6 +1,6 @@
-def save_chat_to_file(current_speaker, message, file_path):
+def save_chat_to_file(file_path, message, current_speaker=""):
     with open(file_path, "a", encoding="utf-8") as chat_file:
-        chat_file.write(f"{current_speaker}: {message}\n")
+        chat_file.write(f"{current_speaker}{message}\n")
         
 def clear_file(file_path):
     with open(file_path, "w", encoding="utf-8") as chat_file:

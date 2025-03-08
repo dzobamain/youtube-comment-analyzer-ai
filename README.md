@@ -50,5 +50,5 @@ Items 1-5 are websites:
 ## How to Run:
 Execute the Script (Console)
 ```
-python main.py
+python app.py
 ```

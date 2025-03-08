@@ -4,7 +4,7 @@ from rich.markdown import Markdown
 from config import chat_log_file_name
 from apis.youtube_client import get_video_comments, check_video_exists
 from apis.openai_client import analyze_comments_in_batches
-from chat.file_maneger import save_chat_to_file, clear_file, read_from_file
+from chat.file import save_chat_to_file, clear_file, read_from_file
 
 def main():
     stop_word = "quit"
@@ -38,8 +38,8 @@ def main():
         
         gpt_query = analyze_comments_in_batches(comments, user_query, chat_history)
         
-        save_chat_to_file("User", user_query, chat_log_file_name)
-        save_chat_to_file("ChatGPT", gpt_query, chat_log_file_name)
+        save_chat_to_file(chat_log_file_name, user_query, "User: ")
+        save_chat_to_file(chat_log_file_name, gpt_query, "GPT: ")
         
         gpt_query_to_console = Markdown(gpt_query)
         console.print("[cyan] ChatGPT: [/cyan]", end="")
