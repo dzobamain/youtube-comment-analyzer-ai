@@ -10,7 +10,7 @@ from chat.chat_history_manager import chat_history_manager
 
 def url_input(video_url, stop_word):
     while True:
-        if video_url.lower() == stop_word:
+        if video_url.lower() == stop_word.lower():
             return False
         video_id = check_video_exists(video_url)
         if not video_id:
@@ -37,9 +37,9 @@ def main():
     
     while isStart:
         user_query = input("\033[90m User: \033[0m")
-        if user_query.lower() == stop_word:
+        if user_query.lower() == stop_word.lower():
             break  
-        elif user_query.lower() == ulr_word:
+        elif user_query.lower() == ulr_word.lower():
             video_url = input("\033[31m Enter YouTube video URL: \033[0m")
             video_id = url_input(video_url, stop_word)
             
