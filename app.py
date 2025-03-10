@@ -6,6 +6,7 @@ from config import chat_log_file_name
 from apis.youtube_client import get_video_comments, check_video_exists
 from apis.openai_client import analyze_comments_in_batches
 from chat.file import save_chat_to_file, clear_file, read_from_file
+from chat.chat_history_manager import chat_history_manager
 
 def url_input(video_url, stop_word):
     while True:
@@ -57,6 +58,7 @@ def main():
         console.print(gpt_query_to_console, end="\n")
         
         chat_history = read_from_file(chat_log_file_name)
+        chat_history_manager(chat_log_file_name, len(chat_history))
         
     clear_file(chat_log_file_name)
     
