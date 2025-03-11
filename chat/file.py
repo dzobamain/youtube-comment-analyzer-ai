@@ -1,4 +1,4 @@
-def save_chat_to_file(file_path, message, current_speaker=""):
+def save_chat_to_file(message, file_path, current_speaker=""):
     with open(file_path, "a", encoding="utf-8") as chat_file:
         chat_file.write(f"{current_speaker}{message}\n")
         

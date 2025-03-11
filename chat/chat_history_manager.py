@@ -26,7 +26,7 @@ def clear_message(file_path, last_empty_index):
             chat_file.writelines(lines)
 
 
-def chat_history_manager(file_path, text_length, number_of_symbols=max_sumbol_for_chat_history):
+def chat_history_manager(text_length, file_path, number_of_symbols=max_sumbol_for_chat_history):
     if text_length > number_of_symbols:
         index = find_message_end(file_path)
         
