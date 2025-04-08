@@ -2,7 +2,13 @@ import openai
 from config import api_key_openai, model_gpt, task_settings
 
 def split_comments(comments, batch_size=100):
-    return [comments[i:i + batch_size] for i in range(0, len(comments), batch_size)]
+    batches = []
+    for start_index in range(0, len(comments), batch_size):
+        end_index = start_index + batch_size
+        batch = comments[start_index:end_index]
+        batches.append(batch)
+        
+    return batches
 
 def get_chatgpt_response(comments, user_query, chat_history=None):
     openai.api_key = api_key_openai
