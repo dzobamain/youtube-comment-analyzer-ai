@@ -10,16 +10,19 @@ def split_comments(comments, batch_size=100):
         
     return batches
 
+
 def get_chatgpt_response(comments, user_query, chat_history=None):
     openai.api_key = api_key_openai
     response = openai.ChatCompletion.create(
         model=model_gpt,
         messages=[
             {"role": "system", "content": task_settings},
-            {"role": "user", "content": f"Chat history\n {chat_history}. Comments:\n {comments}. Request:\n {user_query}."}
+            {"role": "user", "content": f"&Chat history:\n {chat_history}. &Comments:\n {comments}. &Request:\n {user_query}."}
         ]
     )
+    
     return response.choices[0].message['content'] # return string
+
 
 def analyze_comments_in_batches(comments, user_query, chat_history=None):
     comment_batches = split_comments(comments)

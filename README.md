@@ -1,4 +1,4 @@
-# <p align="center">The program for analyzing comments on a YouTube video</p>
+# <p align="center">Analyzing comments on a YouTube video</p>
 
 ## About the program
 
