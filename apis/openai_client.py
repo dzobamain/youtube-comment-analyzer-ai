@@ -1,5 +1,5 @@
 import openai
-from config import api_key_openai, model_gpt, task_settings
+from config import api_key_ai, model_gpt, task_settings
 
 def split_comments(comments, batch_size=100):
     batches = []
@@ -12,7 +12,7 @@ def split_comments(comments, batch_size=100):
 
 
 def get_chatgpt_response(comments, user_query, chat_history=None):
-    openai.api_key = api_key_openai
+    openai.api_key = api_key_ai
     response = openai.ChatCompletion.create(
         model=model_gpt,
         messages=[
