@@ -1,3 +1,23 @@
+# Virtual environment
+.venv/
+
+# Python cache files
 __pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables file
 .env
+
+# macOS system files
 .DS_Store
+
+# VSCode settings
+.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+
+chat/chat_history.txt
