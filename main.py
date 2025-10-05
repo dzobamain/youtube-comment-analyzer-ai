@@ -3,7 +3,7 @@
 from rich.console import Console
 from rich.markdown import Markdown
 
-from appconfig import config
+from apiconfig import api_config
 from ytube.yclient import get_video_comments
 from ai.aiclient import analyze_comments_in_batches
 from ytube.url import url_input
@@ -18,7 +18,7 @@ def main():
     chat_history = ""
 
     # Clear previous chat history at the start
-    clear_file(config.chat_log_file_name)
+    clear_file(api_config.chat_log_file_name)
     
     print(f"\033[34m{stop_word.capitalize()} to exit, change video {ulr_word} \033[0m")
     
@@ -45,15 +45,15 @@ def main():
                 isStart = False
                 break
             comments = get_video_comments(video_id)
-            clear_file(config.chat_log_file_name)
+            clear_file(api_config.chat_log_file_name)
             continue
         
         # Analyze comments with AI in batches
         gpt_query = analyze_comments_in_batches(comments, user_query, chat_history)
         
         # Save user query and AI response to chat log
-        save_chat_to_file(user_query + "\n\n", config.chat_log_file_name, "User: ")
-        save_chat_to_file(gpt_query + "\n\n", config.chat_log_file_name, "AI: ")
+        save_chat_to_file(user_query + "\n\n", api_config.chat_log_file_name, "User: ")
+        save_chat_to_file(gpt_query + "\n\n", api_config.chat_log_file_name, "AI: ")
         
         # Print AI response in Markdown format using rich
         gpt_query_to_console = Markdown(gpt_query)
@@ -61,11 +61,11 @@ def main():
         console.print(gpt_query_to_console)
         
         # Update chat history and manage its length
-        chat_history = read_from_file(config.chat_log_file_name)
-        chat_history_manager(len(chat_history), config.chat_log_file_name)
+        chat_history = read_from_file(api_config.chat_log_file_name)
+        chat_history_manager(len(chat_history), api_config.chat_log_file_name)
         
     # Clear chat history at the end of the session
-    clear_file(config.chat_log_file_name)
+    clear_file(api_config.chat_log_file_name)
     
 
 if __name__ == "__main__":

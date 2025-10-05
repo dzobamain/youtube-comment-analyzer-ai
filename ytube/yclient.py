@@ -1,10 +1,10 @@
 # ytube/yclient.py
 
-from appconfig import config
+from apiconfig import api_config
 from googleapiclient.discovery import build
 
 # Initialize YouTube API client with developer key
-youtube = build("youtube", "v3", developerKey=config.api_key_youtube)
+youtube = build("youtube", "v3", developerKey=api_config.api_key_youtube)
 
 
 def check_video_exists(video_url):

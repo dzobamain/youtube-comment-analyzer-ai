@@ -6,7 +6,7 @@ from chat.file import read_from_file
 
 load_dotenv()
 
-class Config:
+class ApiConfig:
     def __init__(self):
         # YouTube API Key (required for fetching comments from a video)
         self.api_key_youtube = os.getenv("YOUTUBE_API_KEY")
@@ -50,4 +50,4 @@ class Config:
         # Maximum number of characters for chat history
         self.max_symbol_for_chat_history = 3000
 
-config = Config()
+api_config = ApiConfig()

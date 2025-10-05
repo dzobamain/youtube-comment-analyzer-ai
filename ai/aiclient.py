@@ -1,10 +1,10 @@
 # ai/aiclient.py
 
 from gpt4all import GPT4All
-from appconfig import config
+from apiconfig import api_config
 
 # Initialize GPT4All model with the chosen model name from config
-ai_model = GPT4All(config.model_name)
+ai_model = GPT4All(api_config.model_name)
 
 
 def split_comments(comments, batch_size=100):

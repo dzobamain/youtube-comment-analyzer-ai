@@ -1,8 +1,7 @@
 # chat/history_manager.py
 
 from chat.file import read_from_file
-from appconfig import config
-
+from apiconfig import api_config
 
 def find_message_end(file_path):
     """
@@ -39,7 +38,7 @@ def clear_message(file_path, last_empty_index):
             chat_file.writelines(lines)
 
 
-def chat_history_manager(text_length, file_path, number_of_symbols=config.max_symbol_for_chat_history):
+def chat_history_manager(text_length, file_path, number_of_symbols=api_config.max_symbol_for_chat_history):
     """
     Manages chat history file:
     - If the text length exceeds the max allowed characters,
