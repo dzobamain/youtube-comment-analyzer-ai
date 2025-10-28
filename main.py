@@ -57,7 +57,7 @@ def main():
         
         # Print AI response in Markdown format using rich
         gpt_query_to_console = Markdown(gpt_query)
-        console.print("[cyan]GPT: [/cyan]", end="")
+        console.print("[cyan]AI: [/cyan]", end="")
         console.print(gpt_query_to_console)
         
         # Update chat history and manage its length

@@ -41,6 +41,8 @@ class ApiConfig:
         #   - Balanced → Nous-Hermes (Mistral 7B) or Llama-3 8B
         #   - More power, better quality → GPT4All-13B
 
+        self.max_n_ctx = 8192
+        self.max_tokens = 2048
         # AI task settings
         self.task_settings = read_from_file("ai/bot_rules.txt")
 
